@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acervo de Fé — Milagres, Santos e Aparições</title>
+<meta name="description" content="Acervo pesquisável de milagres eucarísticos, santos, aparições marianas, relíquias e devoções católicas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <span class="brand-mark">✝</span>
+      <span class="brand-name">Acervo <em>de Fé</em></span>
+    </div>
+    <button id="adminToggle" class="admin-toggle" title="Área do administrador">+ Adicionar registro</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-ornament" aria-hidden="true"></div>
+  <h1>Um arquivo vivo <span>da tradição católica</span></h1>
+  <p class="hero-sub">Milagres eucarísticos, vidas de santos, aparições marianas e relíquias — reunidos, catalogados e pesquisáveis em um só lugar.</p>
+
+  <form id="searchForm" class="search-bar" role="search">
+    <input id="searchInput" type="text" placeholder="Pesquisar por nome, lugar ou palavra-chave… ex: Fátima, Padre Pio, Lanciano" autocomplete="off">
+    <button type="submit">Pesquisar</button>
+  </form>
+
+  <nav id="categoryTabs" class="category-tabs" aria-label="Categorias">
+    <button class="tab active" data-slug="todas" style="--tab-color:#7A2E2E">Todas</button>
+  </nav>
+</section>
+
+<main>
+  <div class="results-meta">
+    <span id="resultsCount">Carregando registros…</span>
+  </div>
+  <div id="resultsGrid" class="results-grid"></div>
+  <p id="emptyState" class="empty-state" hidden>Nenhum registro encontrado. Tente outro termo de pesquisa.</p>
+</main>
+
+<footer class="site-footer">
+  <p>Acervo de Fé — projeto de referência e estudo. Verifique sempre as fontes originais indicadas em cada registro.</p>
+</footer>
+
+<!-- Modal de detalhe -->
+<div id="detailModal" class="modal" hidden>
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel" role="dialog" aria-modal="true">
+    <button class="modal-close" data-close aria-label="Fechar">×</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<!-- Modal admin: adicionar novo registro -->
+<div id="adminModal" class="modal" hidden>
+  <div class="modal-backdrop" data-close-admin></div>
+  <div class="modal-panel" role="dialog" aria-modal="true">
+    <button class="modal-close" data-close-admin aria-label="Fechar">×</button>
+    <h2>Adicionar novo registro</h2>
+    <p class="modal-hint">É necessária a chave de administrador definida no servidor (variável <code>ADMIN_KEY</code>).</p>
+    <form id="adminForm" class="admin-form">
+      <label>Chave de administrador
+        <input type="password" id="f_adminkey" required>
+      </label>
+      <label>Categoria
+        <select id="f_category" required></select>
+      </label>
+      <label>Título
+        <input type="text" id="f_title" required>
+      </label>
+      <label>Resumo (aparece na listagem)
+        <textarea id="f_summary" rows="2"></textarea>
+      </label>
+      <label>Conteúdo completo
+        <textarea id="f_content" rows="5"></textarea>
+      </label>
+      <div class="form-row">
+        <label>Local
+          <input type="text" id="f_location">
+        </label>
+        <label>Data / período
+          <input type="text" id="f_date">
+        </label>
+      </div>
+      <label>URL de imagem (opcional)
+        <input type="url" id="f_image">
+      </label>
+      <label>Fonte / referência (URL, opcional)
+        <input type="url" id="f_source">
+      </label>
+      <button type="submit">Salvar registro</button>
+      <p id="adminFormMsg" class="form-msg"></p>
+    </form>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
