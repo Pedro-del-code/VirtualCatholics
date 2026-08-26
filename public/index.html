@@ -18,7 +18,6 @@
       <span class="brand-mark">✝</span>
       <span class="brand-name">Virtual<em>Catholics</em></span>
     </div>
-    <button id="adminToggle" class="admin-toggle" title="Área do administrador">+ Adicionar registro</button>
   </div>
 </header>
 
@@ -55,49 +54,6 @@
   <div class="modal-panel" role="dialog" aria-modal="true">
     <button class="modal-close" data-close aria-label="Fechar">×</button>
     <div id="modalContent"></div>
-  </div>
-</div>
-
-<!-- Modal admin: adicionar novo registro -->
-<div id="adminModal" class="modal" hidden>
-  <div class="modal-backdrop" data-close-admin></div>
-  <div class="modal-panel" role="dialog" aria-modal="true">
-    <button class="modal-close" data-close-admin aria-label="Fechar">×</button>
-    <h2>Adicionar novo registro</h2>
-    <p class="modal-hint">É necessária a chave de administrador definida no servidor (variável <code>ADMIN_KEY</code>).</p>
-    <form id="adminForm" class="admin-form">
-      <label>Chave de administrador
-        <input type="password" id="f_adminkey" required>
-      </label>
-      <label>Categoria
-        <select id="f_category" required></select>
-      </label>
-      <label>Título
-        <input type="text" id="f_title" required>
-      </label>
-      <label>Resumo (aparece na listagem)
-        <textarea id="f_summary" rows="2"></textarea>
-      </label>
-      <label>Conteúdo completo
-        <textarea id="f_content" rows="5"></textarea>
-      </label>
-      <div class="form-row">
-        <label>Local
-          <input type="text" id="f_location">
-        </label>
-        <label>Data / período
-          <input type="text" id="f_date">
-        </label>
-      </div>
-      <label>URL de imagem (opcional)
-        <input type="url" id="f_image">
-      </label>
-      <label>Fonte / referência (URL, opcional)
-        <input type="url" id="f_source">
-      </label>
-      <button type="submit">Salvar registro</button>
-      <p id="adminFormMsg" class="form-msg"></p>
-    </form>
   </div>
 </div>
 
