@@ -55,6 +55,23 @@ async function ensureSchema() {
     await pool.query(cleanupSql);
   }
 
+  // Importa o catálogo de santos e beatos do Calendário Romano Geral
+  // (celebrações universais da Igreja). Idempotente: só roda se ainda
+  // houver poucos registros na categoria.
+  const santosFile = path.join(__dirname, 'db', 'santos_calendario_romano.sql');
+  if (fs.existsSync(santosFile)) {
+    const { rows: santosCountRows } = await pool.query(
+      `SELECT COUNT(*)::int AS total FROM entries e
+       JOIN categories c ON c.id = e.category_id
+       WHERE c.slug = 'santos'`
+    );
+    if (santosCountRows[0].total < 100) {
+      const santosSql = fs.readFileSync(santosFile, 'utf8');
+      await pool.query(santosSql);
+      console.log('Catálogo de santos e beatos importado.');
+    }
+  }
+
   // Aplica fotos (Wikimedia Commons, licença livre) para os milagres mais conhecidos.
   // Idempotente: só preenche image_url onde ainda está NULL, então é seguro
   // rodar em todo boot.
