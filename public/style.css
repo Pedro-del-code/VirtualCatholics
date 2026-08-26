@@ -72,20 +72,16 @@ body {
   position: relative;
 }
 .hero-ornament {
-  width: 46px;
-  height: 46px;
-  margin: 0 auto 18px;
-  border: 1px solid var(--gold);
-  transform: rotate(45deg);
-  position: relative;
+  display: block;
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+  padding: 4px;
+  box-shadow: 0 0 0 1px rgba(166,119,31,0.25), 0 10px 24px rgba(122,46,46,0.18);
 }
-.hero-ornament::before, .hero-ornament::after {
-  content: '';
-  position: absolute;
-  background: var(--gold);
-}
-.hero-ornament::before { width: 1px; height: 70px; top: -12px; left: 22px; opacity: .35; }
-.hero-ornament::after { width: 70px; height: 1px; left: -12px; top: 22px; opacity: .35; }
 
 .hero h1 {
   font-family: var(--font-display);
