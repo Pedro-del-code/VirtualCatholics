@@ -47,6 +47,14 @@ async function ensureSchema() {
     }
   }
 
+  // Remove duplicatas: mantém a versão mais detalhada (do seed.sql original)
+  // quando o mesmo milagre também veio do catálogo de 142. Idempotente.
+  const cleanupFile = path.join(__dirname, 'db', '142_limpeza_duplicados.sql');
+  if (fs.existsSync(cleanupFile)) {
+    const cleanupSql = fs.readFileSync(cleanupFile, 'utf8');
+    await pool.query(cleanupSql);
+  }
+
   // Aplica fotos (Wikimedia Commons, licença livre) para os milagres mais conhecidos.
   // Idempotente: só preenche image_url onde ainda está NULL, então é seguro
   // rodar em todo boot.
