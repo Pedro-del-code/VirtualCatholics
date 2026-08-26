@@ -1,0 +1,23 @@
+databases:
+  - name: acervo-fe-db
+    plan: free
+    databaseName: acervo_fe
+    user: acervo_fe
+
+services:
+  - type: web
+    name: acervo-fe-site
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: acervo-fe-db
+          property: connectionString
+      - key: ADMIN_KEY
+        generateValue: true
+      - key: NODE_VERSION
+        value: 20.11.1
