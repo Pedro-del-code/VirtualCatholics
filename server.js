@@ -30,6 +30,31 @@ async function ensureSchema() {
     await pool.query(seed);
     console.log('Categorias e exemplos iniciais inseridos.');
   }
+
+  // Importa o catálogo de 142 milagres eucarísticos (roda uma única vez,
+  // idempotente: só executa se ainda houver poucos registros na categoria).
+  const bulkFile = path.join(__dirname, 'db', '142_milagres_eucaristicos.sql');
+  if (fs.existsSync(bulkFile)) {
+    const { rows: countRows } = await pool.query(
+      `SELECT COUNT(*)::int AS total FROM entries e
+       JOIN categories c ON c.id = e.category_id
+       WHERE c.slug = 'milagres-eucaristicos'`
+    );
+    if (countRows[0].total < 100) {
+      const bulk = fs.readFileSync(bulkFile, 'utf8');
+      await pool.query(bulk);
+      console.log('Catálogo de 142 milagres eucarísticos importado.');
+    }
+  }
+
+  // Aplica fotos (Wikimedia Commons, licença livre) para os milagres mais conhecidos.
+  // Idempotente: só preenche image_url onde ainda está NULL, então é seguro
+  // rodar em todo boot.
+  const photosFile = path.join(__dirname, 'db', '142_fotos_conhecidos.sql');
+  if (fs.existsSync(photosFile)) {
+    const photosSql = fs.readFileSync(photosFile, 'utf8');
+    await pool.query(photosSql);
+  }
 }
 
 function requireAdmin(req, res, next) {
