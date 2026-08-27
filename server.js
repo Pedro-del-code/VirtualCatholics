@@ -80,6 +80,14 @@ async function ensureSchema() {
     const photosSql = fs.readFileSync(photosFile, 'utf8');
     await pool.query(photosSql);
   }
+
+  // Segunda leva de fotos (mais milagres com imagem encontrada no Wikimedia
+  // Commons). Idempotente: só preenche onde image_url ainda está NULL.
+  const photosFile2 = path.join(__dirname, 'db', '142_fotos_lote2.sql');
+  if (fs.existsSync(photosFile2)) {
+    const photosSql2 = fs.readFileSync(photosFile2, 'utf8');
+    await pool.query(photosSql2);
+  }
 }
 
 function requireAdmin(req, res, next) {
