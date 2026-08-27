@@ -1,0 +1,12 @@
+-- Segunda leva de fotos (Wikimedia Commons, licenca livre)
+
+UPDATE entries SET image_url = 'https://commons.wikimedia.org/wiki/Special:FilePath/Church_of_Divine_Mercy%2C_3_Siostry_Faustyny_street%2C_%C5%81agiewniki%2C_Krak%C3%B3w_Poland.jpg' WHERE source_url = 'https://eucharisticmiracles.faith/miracle/divine-mercy-apparitions-cracow' AND image_url IS NULL;
+UPDATE entries SET image_url = 'https://commons.wikimedia.org/wiki/Special:FilePath/Grotto_of_Massabielle_Lourdes.jpg' WHERE source_url = 'https://eucharisticmiracles.faith/miracle/lourdes-eucharistic-procession-1888' AND image_url IS NULL;
+UPDATE entries SET image_url = 'https://commons.wikimedia.org/wiki/Special:FilePath/Bas%C3%ADlica_de_Nuestra_Se%C3%B1ora_del_Pilar%2C_Zaragoza.JPG' WHERE source_url = 'https://eucharisticmiracles.faith/miracle/calanda-miracle-1640' AND image_url IS NULL;
+UPDATE entries SET image_url = 'https://commons.wikimedia.org/wiki/Special:FilePath/Cl.Coello.La_Sagrada_Forma.1685-90.Sacristy%2C_El_Escorial.jpg' WHERE source_url = 'https://eucharisticmiracles.faith/miracle/gorkum-escorial-1572' AND image_url IS NULL;
+UPDATE entries SET image_url = 'https://commons.wikimedia.org/wiki/Special:FilePath/1531_Nuestra_Se%C3%B1ora_de_Guadalupe_anagoria.jpg' WHERE source_url = 'https://eucharisticmiracles.faith/miracle/our-lady-of-guadalupe-1531' AND image_url IS NULL;
+UPDATE entries SET image_url = 'https://commons.wikimedia.org/wiki/Special:FilePath/Bas%C3%ADlica_de_Nuestra_Se%C3%B1ora_del_Pilar%2C_Zaragoza.JPG' WHERE source_url = 'https://eucharisticmiracles.faith/miracle/spa-zaragoza' AND image_url IS NULL;
+UPDATE entries SET image_url = 'https://commons.wikimedia.org/wiki/Special:FilePath/The_Blood_Relic.jpg' WHERE source_url = 'https://eucharisticmiracles.faith/miracle/bel-bruges' AND image_url IS NULL;
+UPDATE entries SET image_url = 'https://commons.wikimedia.org/wiki/Special:FilePath/Santa_Chiara_Assisi2.jpg' WHERE source_url = 'https://eucharisticmiracles.faith/miracle/ita-saint-clare-assisi' AND image_url IS NULL;
+UPDATE entries SET image_url = 'https://commons.wikimedia.org/wiki/Special:FilePath/Bas%C3%ADlica_de_la_Vera_Cruz%2C_Caravaca_%281%29.jpg' WHERE source_url = 'https://eucharisticmiracles.faith/miracle/spa-caravaca-de-la-cruz' AND image_url IS NULL;
+UPDATE entries SET image_url = 'https://commons.wikimedia.org/wiki/Special:FilePath/Chalice_of_Valencia.JPG' WHERE source_url = 'https://eucharisticmiracles.faith/miracle/spa-valencia' AND image_url IS NULL;
