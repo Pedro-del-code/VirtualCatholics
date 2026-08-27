@@ -88,6 +88,15 @@ async function ensureSchema() {
     const photosSql2 = fs.readFileSync(photosFile2, 'utf8');
     await pool.query(photosSql2);
   }
+
+  // Atualiza cada milagre com uma explicação específica dos fatos (em vez do
+  // texto genérico anterior). Idempotente: seguro rodar em todo boot.
+  const detailFile = path.join(__dirname, 'db', '142_conteudo_detalhado.sql');
+  if (fs.existsSync(detailFile)) {
+    const detailSql = fs.readFileSync(detailFile, 'utf8');
+    await pool.query(detailSql);
+    console.log('Conteúdo detalhado dos 142 milagres aplicado.');
+  }
 }
 
 function requireAdmin(req, res, next) {
